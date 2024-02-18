@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row row--md">
+        <div class="col-md-12">
+            <h4>Gestion de livres 📖</h4>
+            <div class="row">
+            
+                
+                <div class="col-md-4">
+                     <ng-container *ngIf="errorMessage()">
+                    <div class="alert alert-danger my-3" role="alert">
+                        {{ errorMessage() }}
+                    </div>
+                </ng-container>
+                    <app-form #formRef />
+                </div>
+                <div class="col-md-8"><app-list [bookForm]="formRef.form" /></div>
+            </div>
+        </div>
+    </div>
+</div>  

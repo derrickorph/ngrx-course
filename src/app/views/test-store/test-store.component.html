@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Starter NGRX</h4>
+            <button class="btn btn-success btn-sm" type="button" (click)="changeUsername()">Changer le nom d'utilisateur</button>
+            <ul class="list-group my-2">
+                <li class="list-group-item">Username : {{user()?.username}}</li>
+                <li class="list-group-item">isAdmin : {{ user()?.isAdmin }}</li>
+            </ul>
+            <button class="btn btn-primary btn-sm" type="button" (click)="loadUsers()">Charger la liste des utilisateurs</button>
+
+            <ng-container *ngIf="isLoaded() && users()?.length">
+
+                <table class="table my-3">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Is Admin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let user of users()">
+    
+                            <tr>
+                                <th scope="row">{{ user.id }}</th>
+                                <td>{{ user.username }}</td>
+                                <td>{{ user.isAdmin }}</td>
+                            </tr>
+                        </ng-container>
+                        
+                    </tbody>
+                </table>
+            </ng-container>
+            <ng-container *ngIf="isLoaded()===false">
+                <div class="text-center">
+                    <div class="alert alert-info my-3" role="alert">
+                        Données en cours de chargement
+                        <div class="spinner-border text-primary ml-3" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="errorMessage()">
+                <div class="alert alert-danger my-3" role="alert">
+                    {{ errorMessage() }}
+                </div>
+            </ng-container>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<ng-container >
+
+    <table class="table my-3">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom du livre</th>
+                <th scope="col">Auteur</th>
+                <th scope="col">Maison d'édition</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let book of books()">
+
+                <tr>
+                    <th scope="row">{{ book.id }}</th>
+                    <td>{{ book.name }}</td>
+                    <td>{{ book.author }}</td>
+                    <td>{{ book.publisher }}</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-outline-warning mr-2" (click)="editBook(book)">Modifier</button>
+                        <button type="button" class="btn btn-sm btn-outline-danger" (click)="deleteBook(book.id)">Supprimer</button>
+                    </td>
+                </tr>
+            </ng-container>
+
+        </tbody>
+    </table>
+</ng-container>
