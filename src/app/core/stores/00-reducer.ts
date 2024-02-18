@@ -63,6 +63,7 @@ export const rootReducer = createReducer<RootState, Action>(
       },
     };
   }),
+  
   on(RootActions.changeIsAdmin, (state: RootState, props) => {
     return {
       ...state,
